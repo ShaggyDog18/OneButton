@@ -15,31 +15,28 @@ http://www.mathertel.de/Arduino/OneButtonLibrary.aspx
 
 **Major Modification**:
 - added new functions:
-  - `tripleClickFunc()` for multiple 3+ clicks (for 3 clicks and more)
+  - `multiClickFunc()` for multiple 3+ clicks (for 3 clicks and more)
   - `getNumberClicks()` to return number of multiple clicks;
   - `attachPressStart()` to mainatin compatibility with the new release v1.5 of the parent library: fires immediately as the button is pressed down. 
   
 ## Change Log:
-**22.01.2001, Release 1.5.0** 
-- optimized: defined all "small" one-line functions as `inline` and moved them to `OneButton.h` file;
-- the tick() method is compact and can be called from an Interrupt routine;
-- changed default for ClickTicks=400 and PressTicks=800 to make a button more "responsive".
-- still maintained a full compatibility with the original library and previous releases; so no change is required to your existing projects :-)
+
+**21.01.2021**
+- added `isIdle()` function to maintain compatibility with original library developments
+- renamed `tripleClick()` to `multiClick()` to maintain compatibility
+- made some more optimization to decrease size
 
 **12.02.2020**
 - modified state machine (still same number of states), maintained full compatibility with the initial library; 
-- introduced a new functions: `tripleClickFunc()` for multiple 3+ clicks; `getNumberClicks()` to return number of clicks; 
+- introduced a new functions: `multiClickFunc()` for multiple 3+ clicks; `getNumberClicks()` to return number of clicks; 
 - optimized - changed some types of variables (f.e.: `bool _buttonPressed`, `uint8_t _state`) to compact the code; 
 - optimized - by using `switch()` instead of multiple `if()`-s; 
-- introdiced `#define PARAM_FUNC`- if commented in `oneButton.h` (commented y default), call functions with parameters will not be used/compiled to save space; If you need call functions with parameters, include `#define PARAM_FUNC` line right before the `#include <OneButton.h>` line;
-- modified `SimpleOneButton` example to test more functions including new `tripleClickFunc()` and `getNumberClicks()` functions.
+- introdiced `#define PARAM_FUNC` - if commented in `oneButton.h`, the call functions with parameters will not be used to save space; 
+- modified `SimpleOneButton` example to test more functions incl. new `multiClickFunc()` and `getNumberClicks()` functions.
 
 **23.06.2020**
 - sync up with the original library, release v1.5, by adding the new function `attachPressStart()`.
 - extensed `SimpleOneButton` example that includes new function and allows to test almost all library functions.
-
-**09.07.2020**
-- corrected spelling of `attachTripleClic()` function; now it is with just one 'p': `Triple` instead of `Tripple`. So, if you use my library, you would need to correct the function name in your application. 
 
 **If you like new functions and use the modified library, please, consider making a small "cup of coffee" donation using [PayPal](https://paypal.me/shaggyDog18/3USD)**
 
@@ -120,8 +117,8 @@ btn.attachDoubleClick([]() {
 };
 
 // Triple Click event attachment
-btn.attachTripleClick([]() {
-  Serial.println("Triple Click!");
+btn.attachMultiClick([]() {
+  Serial.println("Multi Click!");
 };
 ```
 
@@ -129,6 +126,7 @@ btn.attachTripleClick([]() {
 
 In order for `OneButton` to work correctly, you must call `tick()` on __each button instance__
 within your main `loop()`. If you're not getting any button events, this is probably why.
+You may also call `tick()` from PinChangeInterupt routine to make buttons more reponsive. Please, refer to `InterruptOneButton` example. 
 
 ```CPP
 void loop() {
@@ -147,8 +145,8 @@ Here's a full list of events handled by this library:
 | ----------------------- | ---------------------------------------------------------- |
 | `attachClick`           | Fires as soon as a single click is detected.               |
 | `attachDoubleClick`     | Fires as soon as a double click is detected.               |
-| `attachTripleClick`     | **NEW** Fires as soon as triple click or more clicks are detected. |
-| `attachPressStart`      | **NEW** Fires as soon as the button is pressed down.               |
+| `attachMultiClick`      | **NEW** Fires as soon as multiple 3+ click are detected.      |
+| `attachPressStart`      | **NEW** Fires as soon as the button is pressed down.          |
 | `attachLongPressStart`  | Fires as soon as the button is held down for 1 second.     |
 | `attachDuringLongPress` | Fires periodically as long as the button is held down.     |
 | `attachLongPressStop`   | Fires when the button is released after a long hold.       |
@@ -176,6 +174,7 @@ otherwise it must wait for the double click timeout to pass.
 | Function                   | Description                                                                        |
 | -------------------------- | ---------------------------------------------------------------------------------- |
 | `bool isLongPressed()`     | Detect whether or not the button is currently inside a long press.                 |
+| `bool isIdle()`            | **NEW** Returns `true` if no button press is under processing  |
 | `int getPressedTicks()`    | Get the current number of milliseconds that the button has been held down for. |
 | `uint8_t getNumberClicks()`| **NEW** Get number of detected clicks. Return single or multiple number of clicks.     |
 

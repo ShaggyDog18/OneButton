@@ -19,7 +19,7 @@
 // 23.06.2020 synch up with the original library version 1.5; added attachPressStart() function; test includes almost all functions
 //--------------------
 #include "OneButton.h"
-// 3300 / 299
+// 3256 / 298
 
 // Setup a new OneButton on pin A1.  
 OneButton button(A1, true);
@@ -39,8 +39,8 @@ void setup() {
   // link the doubleclick function to be called on a doubleclick event. 
   button.attachClick(click);
   button.attachDoubleClick(doubleClick);
-  button.attachTripleClick(tripleClick);
-  button.attachLongPressStart(longPress);
+  button.attachMultiClick(multiClick);
+  button.attachLongPressStart(longPressStart);
   button.attachLongPressStop(longPressStop);
   button.attachDuringLongPress(duringLongPress);
   button.attachPressStart(pressStart); // new function added to the original library v1.5 
@@ -70,16 +70,16 @@ void doubleClick() {
 } // doubleclick
 
 // this function will be called when the button was pressed 3 times and more in a short timeframe.
-void tripleClick() {
+void multiClick() {
   ledState = !ledState;// reverse the LED 
   digitalWrite(LED_BUILTIN, ledState);;
-  Serial.print("3-clik: ");Serial.println(button.getNumberClicks());
+  Serial.print("m-clik: ");Serial.println(button.getNumberClicks());
 } // tripleclick
 
-void longPress() {
+void longPressStart() {
   ledState = !ledState;// reverse the LED 
   digitalWrite(LED_BUILTIN, ledState);
-  Serial.print("LongPress: ");Serial.println(button.getNumberClicks());
+  Serial.print("LongPressStart: ");Serial.println(button.getNumberClicks());
 } // 
 
 void duringLongPress() {

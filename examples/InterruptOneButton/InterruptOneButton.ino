@@ -53,7 +53,7 @@ ISR(PCINT1_vect) {
 // main code here, to run repeatedly: 
 void loop() {
   // You can implement other code in here or just wait a while 
-  button.tick(); // call tick() in the main loop() to make button even momre responsive.
+  button.tick(); // call tick() in the main loop() to make button even mome responsive.
   delay(10);
 } // loop
 

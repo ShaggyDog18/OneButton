@@ -55,8 +55,7 @@ typedef enum {
   ACTION_ON,   // set LED "ON"
   ACTION_SLOW, // blink LED "SLOW"
   ACTION_FAST  // blink LED "FAST"
-} 
-MyActions;
+} MyActions;
 
 // Setup a new OneButton on pin A1.  
 OneButton button(A1, true);
