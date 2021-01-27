@@ -163,7 +163,7 @@ void OneButton::tick(const bool buttonIsPressed) {
       _nClicks++;
       switch(_nClicks) {
       case 1:  // one click
-          if (_pressFunc) _pressFunc();
+          //if (_pressFunc) _pressFunc();
           if (_clickFunc) _clickFunc(); 
           #ifdef PARAM_FUNC
             if (_paramClickFunc) _paramClickFunc(_clickFuncParam);

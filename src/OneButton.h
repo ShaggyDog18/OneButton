@@ -43,6 +43,7 @@ typedef void (*callbackFunction)(void);
 }
 
 #define attachTripleClick attachMultiClick  // for compatibility with previous version
+#define attachPress attachClick  // for compatibility with previous library version
 
 
 class OneButton {
@@ -99,7 +100,8 @@ public:
    * @deprecated Replaced by longPressStart, longPressStop, and duringLongPress.
    * @param newFunction
    */
-  inline void attachPress(callbackFunction newFunction){ _pressFunc = newFunction; }
+  // defined it as alias to attachClick()
+  //inline void attachPress(callbackFunction newFunction){ _pressFunc = newFunction; }
 
   /**
    * Attach an event to fire as soon as the button is pressed down.
@@ -178,7 +180,7 @@ public:
 private:
   // These variables will hold functions acting as event source.
   callbackFunction _clickFunc = NULL;
-  callbackFunction _pressFunc = NULL; // old function, same as _clickFunc(); keep it for compatibility
+  //callbackFunction _pressFunc = NULL; // old function, same as _clickFunc(); keep it for compatibility
   callbackFunction _doubleClickFunc = NULL;
   callbackFunction _multiClickFunc = NULL;	// new multiple click function
   callbackFunction _pressStartFunc = NULL;
