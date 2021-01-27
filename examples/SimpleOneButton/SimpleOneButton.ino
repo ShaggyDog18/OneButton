@@ -19,7 +19,7 @@
 // 23.06.2020 synch up with the original library version 1.5; added attachPressStart() function; test includes almost all functions
 //--------------------
 #include "OneButton.h"
-// 3256 / 298
+// 3260 / 302
 
 // Setup a new OneButton on pin A1.  
 OneButton button(A1, true);

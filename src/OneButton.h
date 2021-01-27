@@ -42,6 +42,8 @@ typedef void (*callbackFunction)(void);
 #endif
 }
 
+#define attachTripleClick attachMultiClick  // for compatibility with previous version
+
 
 class OneButton {
 public:
