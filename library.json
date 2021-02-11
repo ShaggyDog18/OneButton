@@ -1,11 +1,12 @@
 {
   "name": "OneButton",
-  "keywords": "arduino, button, pushbutton",
-  "description": "Modified by ShaggyDog. This Arduino library is improving the usage of a singe button for input. It shows how to use an digital input pin with a single pushbutton attached for detecting some of the typical button press events like single clicks, double clicks and long-time pressing. This enables you to reuse the same button for multiple functions and lowers the hardware invests.",
+  "version":"1.5.0",
+  "keywords": "arduino, button, pushbutton, click, doubleclick, tripleclick",
+  "description": "Modified by ShaggyDog. This Arduino library is improving the usage of a singe button for input. It allows using a digital input pin with a single pushbutton attached and detecting some of the typical button press events like single clicks, double clicks, multple clicks and long-time pressing. This enables you to reuse the same button for multiple functions and lowers the hardware investments.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ShaggyDog18/OneButton"
+    "url": "https://github.com/ShaggyDog18/OneButton.git"
   },
-  "frameworks": "arduino",
+  "frameworks": "*",
   "platforms": "*"
 }
