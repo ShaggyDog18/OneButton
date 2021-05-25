@@ -14,7 +14,7 @@ http://www.mathertel.de/Arduino/OneButtonLibrary.aspx
 
 **Major Modification**:
 - added new functions:
-  - `multiClickFunc()` for multiple 3+ clicks (for 3 clicks and more)
+  - `multiClick()` for multiple 3+ clicks (for 3 clicks and more)
   - `getNumberClicks()` to return number of multiple clicks;
   - `attachPressStart()` to mainatin compatibility with the new release v1.5 of the parent library: fires immediately as the button is pressed down. 
   
